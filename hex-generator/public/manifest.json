@@ -1,0 +1,7 @@
+{
+  "short_name": "Hex Gen",
+  "name": "Hex Map Generator",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone"
+}
