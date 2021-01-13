@@ -9,19 +9,47 @@ const resources = size => {
   return (
     <div className="resource-bar">
       {[...Array(sample([4]))].map((e, i) => {
+        const color =
+          i === 1 ? "blue" : i === 2 ? "red" : i === 3 ? "green" : "white";
+        //max of 5 min of 0 with bias towards lower
+        const max = 5;
+        const min = 0;
+        const numResource = Math.floor(
+          Math.pow(Math.abs(Math.random() - Math.random()), 1.2) *
+            (1 + max - min) +
+            min,
+        );
         return (
-          <div
-            className="resource"
-            key={`resource_${i}`}
-            style={{
-              backgroundColor: "#ffffff",
-              zIndex: "-30",
-              borderRadius: "50%",
-              width: `${size}in`,
-              height: `${size}in`,
-              margin: "0px 3px",
-            }}
-          ></div>
+          <>
+            {i !== 0 && (
+              <div
+                className="divider"
+                key={`resource_${i}`}
+                style={{
+                  color: "gray",
+                  fontWeight: "bold",
+                  zIndex: "-30",
+                  borderRadius: "50%",
+                }}
+              >
+                {"|"}
+              </div>
+            )}
+            <div
+              className="resource"
+              key={`resource_${i}`}
+              style={{
+                color: color,
+                fontWeight: "bold",
+                zIndex: "-30",
+                borderRadius: "50%",
+                margin: "0px 5px",
+              }}
+            >
+              {" "}
+              {numResource}
+            </div>
+          </>
         );
       })}
     </div>
