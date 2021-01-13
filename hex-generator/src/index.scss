@@ -1,25 +1,11 @@
 $dark: #10181e;
 $light: #f8f8ff;
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+$rotation: 90deg;
 
 .App {
   display: block;
   white-space: nowrap;
   width: 100%;
-  background-color: red;
 }
 
 .hex {
@@ -28,17 +14,57 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  //transform: rotate(30deg);
-  color: $light;
+  transform: rotate($rotation);
   background-color: $dark;
-  -webkit-print-color-adjust: exact !important;
-  width: 2.2in;
-  height: 2.5in;
-  margin: 5px;
-  padding: 10px;
-  clip-path: polygon(50% 0, 100% 25.4%, 100% 74.6%, 50% 100%, 0 74.6%, 0 25.4%);
+  -webkit-print-color-adjust: exact !important; //make sure colors print
+  width: 1.98in;
+  height: 2.25in;
+  margin: 0 0 0 0.3in;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
-.hex-inner {
-  //transform: rotate(-30deg);
+.hex-inner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-$rotation);
+  width: 100%;
+}
+
+.hex-inner-text {
+  display: flex;
+  font-size: 14px;
+  text-align: center;
+  color: $light;
+  margin: auto;
+  position: absolute;
+  white-space: normal;
+  word-spacing: 9999px; //break on every space
+}
+
+.hex-ring {
+  position: absolute;
+  z-index: -100;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.hex-moon {
+  position: absolute;
+  z-index: -100;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.hex-center {
+  z-index: -100;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  color: $light;
+  border-radius: 50%;
+  width: 0.35in;
+  height: 0.35in;
+  color: #fff;
 }
