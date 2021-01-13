@@ -47,24 +47,11 @@ $rotation: 90deg;
   z-index: -100;
   margin: auto;
   border-radius: 50%;
-  border: 1px solid;
 }
 
-.hex-moon {
-  position: absolute;
+.hex-planet {
   z-index: -100;
-  margin: auto;
-  border-radius: 50%;
-  border: 1px solid;
-}
-
-.hex-center {
-  z-index: -100;
-  margin-left: 0 auto;
-  margin-right: 0 auto;
-  color: $light;
   border-radius: 50%;
   width: 0.35in;
   height: 0.35in;
-  color: #fff;
 }
