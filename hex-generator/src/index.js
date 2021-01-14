@@ -5,7 +5,7 @@ import hexTiles from "./hex-tiles";
 import { planet } from "./planets.js";
 
 const blackHole = () => {
-  const holeSize = 1.0;
+  const holeSize = 1.2;
   return (
     <div className="hex-inner-wrapper">
       <div className="hex-inner-text">{/*tile.text || ""*/}</div>

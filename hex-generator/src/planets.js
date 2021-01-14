@@ -10,7 +10,13 @@ const resources = size => {
     <div className="resource-bar">
       {[...Array(sample([4]))].map((e, i) => {
         const color =
-          i === 1 ? "blue" : i === 2 ? "red" : i === 3 ? "green" : "white";
+          i === 1
+            ? "paleturquoise"
+            : i === 2
+            ? "orangered"
+            : i === 3
+            ? "darkseagreen"
+            : "gray";
         //max of 5 min of 0 with bias towards lower
         const max = 5;
         const min = 0;
@@ -26,7 +32,7 @@ const resources = size => {
                 className="divider"
                 key={`resource_${i}`}
                 style={{
-                  color: "gray",
+                  color: "white",
                   fontWeight: "bold",
                   zIndex: "-30",
                   borderRadius: "50%",
@@ -43,7 +49,7 @@ const resources = size => {
                 fontWeight: "bold",
                 zIndex: "-30",
                 borderRadius: "50%",
-                margin: "0px 5px",
+                margin: "0px 6px",
               }}
             >
               {" "}
@@ -164,7 +170,7 @@ export const planet = () => {
 
       {
         //give chances of moons on a planet
-        [...Array(parseInt(Math.random() * 12))].map((e, i) => {
+        [...Array(parseInt(Math.random() * 15))].map((e, i) => {
           return moon(i, planetSize, randomColor);
         })
       }

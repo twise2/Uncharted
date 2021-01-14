@@ -1,17 +1,18 @@
 $dark: #10181e;
 $light: #f8f8ff;
-$rotation: 90deg;
+$rotation: 30deg;
 
 .App {
   display: block;
   white-space: nowrap;
+  margin: 0in, -0.15in;
   width: 100%;
 }
 
 .hex {
   float: left;
   page-break-inside: avoid;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   transform: rotate($rotation);
@@ -19,7 +20,7 @@ $rotation: 90deg;
   -webkit-print-color-adjust: exact !important; //make sure colors print
   width: 1.98in;
   height: 2.25in;
-  margin: 0 0 0 0.3in;
+  margin: -.1in 0.15in;
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
@@ -37,7 +38,6 @@ $rotation: 90deg;
   font-size: 14px;
   text-align: center;
   color: $light;
-  margin: auto;
   position: absolute;
   white-space: normal;
   word-spacing: 9999px; //break on every space
@@ -53,6 +53,7 @@ $rotation: 90deg;
   position: absolute;
   transform: translateY(1.9in);
 }
+
 .hex-inner-name-text {
   font-size: 14px;
   text-align: center;
