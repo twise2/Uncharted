@@ -1,11 +1,13 @@
+import React from "react";
 import {
   sample,
   getFurthestAwayMaximum,
   namePlanet,
   getRandomColor,
+  plusOrMinus,
 } from "./utils.js";
 
-const resources = size => {
+const resources = () => {
   return (
     <div className="resource-bar">
       {[...Array(sample([4]))].map((e, i) => {
@@ -18,7 +20,7 @@ const resources = size => {
             ? "darkseagreen"
             : "gray";
         //max of 5 min of 0 with bias towards lower
-        const max = 5;
+        const max = 3;
         const min = 0;
         const numResource = Math.floor(
           Math.pow(Math.abs(Math.random() - Math.random()), 1.2) *
@@ -26,11 +28,10 @@ const resources = size => {
             min,
         );
         return (
-          <>
+          <React.Fragment key={`resource_${i}`}>
             {i !== 0 && (
               <div
                 className="divider"
-                key={`resource_${i}`}
                 style={{
                   color: "white",
                   fontWeight: "bold",
@@ -43,7 +44,6 @@ const resources = size => {
             )}
             <div
               className="resource"
-              key={`resource_${i}`}
               style={{
                 color: color,
                 fontWeight: "bold",
@@ -55,54 +55,21 @@ const resources = size => {
               {" "}
               {numResource}
             </div>
-          </>
+          </React.Fragment>
         );
       })}
     </div>
   );
 };
 
-const resourcesOffset = size => {
-  let offset = size * 2;
-  return [...Array(sample([4]))].map((e, i) => {
-    //convert negatives
-    let offsetX = [0, 1].includes(i) ? offset : -1 * offset;
-    let offsetY = [1, 2].includes(i) ? offset : -1 * offset;
-    console.log(
-      "i",
-      i,
-      typeof i,
-      offsetX,
-      offsetY,
-      `translateX(${offsetX}in) translateY(${offsetY}in)`,
-    );
-    return (
-      <div
-        className="resource"
-        key={`resource_${i}`}
-        style={{
-          backgroundColor: "#ffffff",
-          zIndex: "-30",
-          borderRadius: "50%",
-          width: `${size}in`,
-          height: `${size}in`,
-          transform: `translateX(${offsetX}in) translateY(${offsetY}in)`,
-          position: "absolute",
-        }}
-      ></div>
-    );
-  });
-};
-
 const moon = (i, planetSize, randomColor) => {
-  let offsetX = getFurthestAwayMaximum(planetSize);
-  if (Math.random() > 0.5) {
-    offsetX = -offsetX;
+  const oddsOfMoon = 0.7;
+  if (Math.random() > oddsOfMoon) {
+    return null;
   }
-  let offsetY = getFurthestAwayMaximum(planetSize);
-  if (Math.random() > 0.5) {
-    offsetY = -offsetY;
-  }
+
+  const offsetX = getFurthestAwayMaximum(planetSize);
+  const offsetY = getFurthestAwayMaximum(planetSize);
 
   const size = planetSize / (6 * Math.random() + 4);
   return (
@@ -111,24 +78,51 @@ const moon = (i, planetSize, randomColor) => {
       key={`moon_${i}`}
       style={{
         backgroundColor: randomColor,
-        zIndex: "-30",
+        zIndex: "-3000",
         borderRadius: "50%",
         width: `${size}in`,
         height: `${size}in`,
-        transform: `translateX(${offsetX}in) translateY(${offsetY}in)`,
+        transform: `translateX(${plusOrMinus(
+          offsetX,
+        )}in) translateY(${plusOrMinus(offsetY)}in)`,
         position: "absolute",
       }}
     ></div>
   );
 };
 
+const binaryPlanet = offset => {
+  offset = plusOrMinus(offset);
+  return (
+    <>
+      {individualPlanet(offset)} {individualPlanet(-offset)}
+    </>
+  );
+};
+
 export const planet = () => {
-  const randomColor = getRandomColor();
-  const oddsOfRings = 0.2;
-  const planetSize = 0.2;
+  const isBinaryPlanet = Math.random() > 0.95;
+  const binaryPlanetOffset = Math.random() * 0.1 + 0.2;
   return (
     <div className="hex-inner-wrapper">
       <div className="hex-inner-text">{/*tile.text || ""*/}</div>
+      {isBinaryPlanet ? binaryPlanet(binaryPlanetOffset) : individualPlanet()}
+      {resources()}
+      <div className="hex-inner-name-text">
+        {namePlanet().toUpperCase() +
+          (isBinaryPlanet ? " & " + namePlanet().toUpperCase() : "")}
+      </div>
+    </div>
+  );
+};
+
+const individualPlanet = (offset = 0) => {
+  const planetSize = 0.2 + Math.random() * 0.2;
+  const randomColor = getRandomColor();
+  const numRings = Math.random() > 0.75 ? (Math.random() > 0.9 ? 2 : 1) : 0;
+
+  return (
+    <>
       <div
         className="planet"
         style={{
@@ -138,35 +132,33 @@ export const planet = () => {
           width: `${planetSize}in`,
           height: `${planetSize}in`,
           position: "absolute",
+          transform: `translateX(${offset}in) translateY(${-offset}in)`,
         }}
       ></div>
 
-      {
-        //give a chance of a ring on a planet
-        Math.random() > 1 - oddsOfRings
-          ? [...Array(parseInt(Math.random() * (1 + 0.1)) + 1)].map((e, i) => {
-              const ringHeight = getFurthestAwayMaximum(planetSize) * 2; //is diameter, not radius;
-              const ringWidth = 0.5 * Math.random() * planetSize;
-              const rotation = parseInt(Math.random() * 90 + 45);
-              return (
-                <div
-                  className="hex-ring"
-                  key={`hex-ring_${i}`}
-                  style={{
-                    border: randomColor ? "2px solid " + randomColor : null,
-                    height: ringHeight.toString() + "in",
-                    width: ringWidth.toString() + "in",
-                    transform: `rotate(${rotation.toString() + "deg"})`,
-                    position: "absolute",
-                    zIndex: -100,
-                    margin: "auto",
-                    borderRadius: "50%",
-                  }}
-                ></div>
-              );
-            })
-          : null
-      }
+      {[...Array(numRings)].map((e, i) => {
+        const ringHeight = getFurthestAwayMaximum(planetSize) * 2; //is diameter, not radius;
+        const ringWidth = 0.5 * Math.random() * planetSize;
+        const rotation = parseInt(Math.random() * 90 + 45);
+        return (
+          <div
+            className="hex-ring"
+            key={`hex-ring_${i}`}
+            style={{
+              border: randomColor ? "2px solid " + randomColor : null,
+              height: ringHeight.toString() + "in",
+              width: ringWidth.toString() + "in",
+              transform: `translateX(${offset}in) translateY(${-offset}in) rotate(${
+                rotation.toString() + "deg"
+              })`,
+              position: "absolute",
+              zIndex: -100,
+              margin: "auto",
+              borderRadius: "50%",
+            }}
+          ></div>
+        );
+      })}
 
       {
         //give chances of moons on a planet
@@ -174,10 +166,6 @@ export const planet = () => {
           return moon(i, planetSize, randomColor);
         })
       }
-
-      {resources(planetSize)}
-
-      <div className="hex-inner-name-text">{namePlanet().toUpperCase()}</div>
-    </div>
+    </>
   );
 };

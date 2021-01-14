@@ -43,7 +43,7 @@ const star = () => {
         <div
           className="star-center"
           style={{
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#fefbe8",
             borderRadius: "50%",
             zIndex: "-50",
             width: `${holeSize}in`,
@@ -70,7 +70,7 @@ const selector = tile => {
 };
 
 ReactDOM.render(
-  <div className="App">
+  <div key="app" className="App">
     {hexTiles.reduce((accum, tile, index) => {
       const count = tile.count || 1;
       for (let i = 0; i < count; i++) {

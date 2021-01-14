@@ -20,12 +20,12 @@ export function shuffle(array) {
 }
 
 export function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
+  let letters = "0123456789ABCDEF";
+  let color = "";
   for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+    color += letters[Math.floor(Math.random() * letters.length)];
   }
-  return color;
+  return "#" + color;
 }
 
 export function sample(array) {
@@ -226,3 +226,7 @@ export function namePlanet() {
   }
   return name;
 }
+
+export const plusOrMinus = num => {
+  return num * (Math.round(Math.random()) * 2 - 1);
+};
