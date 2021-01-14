@@ -1,19 +1,19 @@
 const hexTiles = [
   {
     type: "space",
-    count: 150,
+    count: 100,
   },
   {
     type: "planet",
-    count: 50,
+    count: 54,
   },
   {
     type: "star",
-    count: 10,
+    count: 5,
   },
   {
     type: "blackhole",
-    count: 10,
+    count: 1,
   },
 ];
 
