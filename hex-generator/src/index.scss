@@ -20,7 +20,7 @@ $rotation: 30deg;
   -webkit-print-color-adjust: exact !important; //make sure colors print
   width: 1.98in;
   height: 2.25in;
-  margin: -.1in 0.15in;
+  margin: -0.1in 0.15in;
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
 
@@ -48,17 +48,19 @@ $rotation: 30deg;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  height: 100%;
   width: 100%;
   position: absolute;
-  transform: translateY(1.9in);
+  transform: translateY(0.85in);
 }
 
 .hex-inner-name-text {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
   font-size: 14px;
-  text-align: center;
-  height: 1.9in;
   color: $light;
+  transform: translateY(-0.85in);
   position: absolute;
-  justify-content: flex-start;
 }

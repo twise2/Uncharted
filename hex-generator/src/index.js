@@ -75,9 +75,9 @@ ReactDOM.render(
       const count = tile.count || 1;
       for (let i = 0; i < count; i++) {
         accum.push(
-          <span className="hex" key={`hex_${index}_${i}`}>
+          <div className="hex" key={`hex_${index}_${i}`}>
             {selector(tile)}
-          </span>,
+          </div>,
         );
       }
       return accum;
