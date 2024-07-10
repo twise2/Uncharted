@@ -1,0 +1,10 @@
+{
+  "Tier_0": {
+    "Precognition": "When using amalgamite to chart, you may chart two spaces instead of one. Your units may spend amalgamite as well as adamantine when rolling for defense",
+    "Technical Skills": "Once per turn, you may move a single ship 2 spaces instead of one. When rolling for defense, you may spend anti-matter as well as adamantine.",
+    "Gravitational Understanding": "When uncovering a new planet with rings, add one dark-matter to your store. When attacking, you may spend "
+  },
+  "Tier_1": {},
+  "Tier_2": {},
+  "Tier_3": {}
+}

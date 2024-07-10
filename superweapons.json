@@ -1,0 +1,12 @@
+{
+  "Planet Devastator": "Once per turn, you may change the hex this unit is on to empty space.",
+  "The Harvestor": "Once per turn if the harvestor has not moved this turn, you may change a planet hex occupied by the harvestor to empty space to gain 3 of each resource",
+  "Long Shot": "This unit may not move once placed. Once per turn remove a ship from the map",
+  "Eternal Darkness": "When this unit moves, It may change the hex it was previously on into a black hole.",
+  "Nebulon": "This unit may not moved once placed. Once per turn, convert any ship token within 5 hexes of the nebulon to your color.",
+  "Capital Ship": "This unit acts as a shipyard and warp gate",
+  "Gravity Gun": "Once per turn, create a gravity well on the edges of any hex.",
+  "The Final Solution": "This unit can not move once placed. Unoccupied spaces act as black holes, cannot be charted, and destroy anything moving into them. At the beggining of your turn all hexes adjacent to empty spaces are removed from the game.",
+  "The Hive": "This unit can not move once placed. Whenever you roll a die, add 1 to the die roll.",
+  "Radiation Emitter": "This unit can not move once placed. Choose any location ,mark each side of that hex with a 1-6, and Roll a 6 sided die. Remove all tokens on any hex in a staight line from that side."
+}
