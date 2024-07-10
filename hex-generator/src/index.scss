@@ -9,14 +9,27 @@ $rotation: 30deg;
   width: 100%;
 }
 
+.token {
+  float: left;
+  align-items: center;
+  justify-content: center;
+  width: 0.8in;
+  height: 0.8in;
+  margin: 5px;
+  //printing stuff below
+  page-break-inside: avoid;
+  -webkit-print-color-adjust: exact !important; //make sure colors print
+}
+
 .hex {
   float: left;
-  page-break-inside: avoid;
   display: block;
   align-items: center;
   justify-content: center;
   transform: rotate($rotation);
   background-color: $dark;
+  //printing stuff below
+  page-break-inside: avoid;
   -webkit-print-color-adjust: exact !important; //make sure colors print
   width: 1.98in;
   height: 2.25in;

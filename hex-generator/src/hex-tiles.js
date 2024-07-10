@@ -1,7 +1,7 @@
 const hexTiles = [
   {
     type: "space",
-    count: 100,
+    count: 0,
   },
   {
     type: "planet",

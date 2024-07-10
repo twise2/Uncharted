@@ -3,7 +3,7 @@ import {
   sample,
   getFurthestAwayMaximum,
   namePlanet,
-  getRandomColor,
+  getRandomLighterColor,
   plusOrMinus,
 } from "./utils.js";
 
@@ -118,7 +118,7 @@ export const planet = () => {
 
 const individualPlanet = (offset = 0) => {
   const planetSize = 0.2 + Math.random() * 0.2;
-  const randomColor = getRandomColor();
+  const randomColor = getRandomLighterColor();
   const numRings = Math.random() > 0.75 ? (Math.random() > 0.9 ? 2 : 1) : 0;
 
   return (
